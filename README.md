@@ -29,18 +29,18 @@ My tmux configuration for Linux and WSL.
 ## Setup
 
 ```bash
-git clone git@github.com:lucian-zh/tmux-config.git ~/projects/tmux-config
-ln -s ~/projects/tmux-config/tmux.conf ~/.tmux.conf
+git clone https://github.com/lucian-zh/tmux-config.git ~/projects/tmux-config
+cp ~/projects/tmux-config/tmux.conf ~/.tmux.conf
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
 
-Start tmux and press `Ctrl-b I` to install the configured plugins. If
-`~/.tmux.conf` already exists, move or remove it before creating the link.
+Start tmux and press `Ctrl-b I` to install the configured plugins.
 
 ## Update
 
 ```bash
 cd ~/projects/tmux-config
 git pull --ff-only
+cp tmux.conf ~/.tmux.conf
 tmux source-file ~/.tmux.conf
 ```
