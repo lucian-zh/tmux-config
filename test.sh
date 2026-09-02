@@ -11,6 +11,8 @@ trap cleanup EXIT HUP INT TERM
 
 tmux -L "$socket_name" -f "$script_dir/tmux.conf" \
     new-session -d -s config-test
+tmux -L "$socket_name" source-file "$script_dir/tmux.conf"
+tmux -L "$socket_name" source-file "$script_dir/tmux.conf"
 
 assert_server_option() {
     option=$1
@@ -50,11 +52,16 @@ key_binding() {
 }
 
 assert_server_option set-clipboard on
+assert_server_option escape-time 500
+assert_server_option 'terminal-features[100]' 'xterm-256color:RGB'
+assert_server_option 'terminal-features[101]' 'tmux-256color:RGB'
 assert_session_option default-terminal tmux-256color
 assert_session_option mouse on
 assert_session_option base-index 1
 assert_session_option renumber-windows on
-assert_session_option set-titles off
+assert_session_option set-titles on
+assert_session_option set-titles-string '#T'
+assert_session_option @nova-segment-session-colors '#{?client_prefix,#ffb86c,#50fa7b} #282a36'
 assert_window_option pane-base-index 1
 assert_window_option mode-keys vi
 assert_window_option pane-scrollbars off

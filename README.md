@@ -1,26 +1,29 @@
 # tmux-config
 
-A small tmux configuration for Linux, WSL, and remote Linux servers. This is
-the original mouse-enabled setup, without server-specific latency tuning.
+A small tmux configuration for Linux, WSL, and remote Linux servers. It keeps
+the original mouse-enabled workflow and tolerates delayed OSC replies over SSH.
 
 ## Behavior
 
 - Prefix: `Ctrl-b`
 - Mouse reporting: enabled
 - Copy mode: Vim keys
-- Theme: Catppuccin Mocha
+- Theme: tmux-nova
+- Prefix feedback: the session segment turns orange after `Ctrl-b`
 - Clipboard: tmux clipboard integration through `tmux-yank`
+- Active pane titles are forwarded to the outer terminal
 - Windows and panes start at index 1
 - Windows are automatically renumbered
 
 In copy mode, `v` begins a selection and `Ctrl-v` toggles rectangle selection.
+The configured status separators require a Nerd Font in the terminal profile.
 
 ## Plugins
 
 - `tmux-plugins/tpm`
 - `tmux-plugins/tmux-sensible`
 - `tmux-plugins/tmux-yank`
-- `catppuccin/tmux`
+- `o0th/tmux-nova`
 
 ## tmux 3.7c
 
